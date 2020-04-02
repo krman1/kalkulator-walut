@@ -5,10 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
 
-@Transactional
 @Repository
 public interface DataRepo extends CrudRepository<StoredData,Long> {
 
-	@Override
-	StoredData save (StoredData storedData);
+
 }

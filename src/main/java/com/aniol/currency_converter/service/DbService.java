@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 public class DbService {
 	
 	private DataRepo repositore;
-	
+
 	@Autowired
 	public DbService(DataRepo repositore) {
 		this.repositore = repositore;
 	}
-	
+
 	public StoredData saveData (StoredData storedData){
 			return repositore.save(storedData);
 	}

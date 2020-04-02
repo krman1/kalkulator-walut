@@ -2,23 +2,22 @@ package com.aniol.currency_converter.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "stored_data")
 public class StoredData {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	
-	@Column (name = "to_chages")
+
 	private String toChanges;
 	
-	@Column (name = "after_change")
+
 	private String afterChange;
 	
-	@Column (name = "how_many")
+
 	private double howMany;
 	
-	@Column (name = "score")
+
 	private  double score;
 	
 	public StoredData() {

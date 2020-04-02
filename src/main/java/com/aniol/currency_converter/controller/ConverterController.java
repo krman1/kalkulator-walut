@@ -1,5 +1,6 @@
 package com.aniol.currency_converter.controller;
 import com.aniol.currency_converter.domain.CurrencyTable;
+import com.aniol.currency_converter.repository.DataRepo;
 import com.aniol.currency_converter.service.DbService;
 import com.aniol.currency_converter.NBP.client.NBPClient;
 import com.aniol.currency_converter.domain.StoredData;
@@ -21,6 +22,9 @@ public class ConverterController {
 	
 	@Autowired
 	DbService dbService;
+
+	@Autowired
+	DataRepo dataRepo;
 	
 	java.text.DecimalFormat df=new java.text.DecimalFormat("0.0000");
 	java.text.DecimalFormat de=new java.text.DecimalFormat("0.00");
@@ -37,9 +41,9 @@ public class ConverterController {
 		currencys.stream().flatMap(s -> s.getRatesTable().stream())
 				.forEach(ratesTable -> System.out.println("Waluta: " + ratesTable.getCurrency() + "o symbolu: " + ratesTable.getCode() + " dzisiejszy kurs = " + df.format(ratesTable.getMid()) + " PLN"));
 	}
-	@RequestMapping(method = RequestMethod.POST, value = "saveData")
+
 	public void saveData(@RequestBody StoredData storedData){
-		 dbService.saveData(storedData);
+		 dataRepo.save(storedData);
 		 System.out.println("Zapisuje dane do bazy danych");
 	}
 	
